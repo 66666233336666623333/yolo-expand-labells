@@ -1,6 +1,9 @@
 # yolo-expand-labells
 python脚本，适用于yolo系，当数据不足时进行扩充，自动翻转图片和标注信息，在学校里打比赛很好用。/ This Python script is suitable for the YOLO series and is useful for augmenting data when there is insufficient data. It automatically flips images and annotation information, making it very useful for competitions in school.
 
+确保你已经有了图片和对应的标注信息！！！
+MAKE SURE u already have picture and its labell.
+
 简体中文(Sim Chinese):
 这段代码是一个用于数据增强的Python脚本，专门用于处理图像及其对应的标注文件（假设标注文件是以某种格式存储的文本文件，如YOLO格式）。它可以对图片执行不同的转换操作，包括旋转（顺时针旋转0度、90度、180度、270度）和翻转（水平翻转、垂直翻转），同时更新相应的标注文件以匹配图像的新位置。这可以帮助提高机器学习模型的泛化能力，尤其是在图像识别和对象检测任务中。
 
@@ -23,7 +26,7 @@ python脚本，适用于yolo系，当数据不足时进行扩充，自动翻转�
 注意事项：
 确保classes.txt文件不在标注文件目录中，因为脚本会计算目录中.txt文件的数量。
 生成的图像和标注文件的命名格式为原始文件名后追加序号（例如，原文件image.jpg和image.txt，转换后的文件可能为image_1.jpg和image_1.txt）。
-脚本目前没有实现在图像上绘制文本的功能（相关代码被注释掉了）。
+脚本目前没有实现在图像上绘制文本的功能（相关代码被注释掉了）。注释掉的部分的作用为：在新生成的图片的左上角显示翻转的信息（该图片翻转类型，是0 90 180 270 垂直翻转 水平翻转中的一个）
 
 示例代码调用：
 在使用此脚本之前，你需要设置txtpath和jpgpath变量为你的标注文件和图像文件的路径，然后根据需要设置num_change变量。之后，运行脚本将自动处理所有文件，并在指定目录下创建增强的数据副本。
@@ -42,10 +45,10 @@ Have the glob module installed for file path matching.
 
 Steps for Use:
 Set Paths and Parameters:
-
 Enter the path for the annotation files directory (txtpath).
 Enter the path for the images files directory (jpgpath).
 Input the desired number of data augmentation copies to generate (num_change).
+
 Execute the Script:
 The script checks if the number of annotation files matches the number of image files. If they do not match, the script will terminate and display an error message.
 If the numbers match, the script will perform a randomly selected transformation operation on each image and its corresponding annotation file, including rotations and flips.
@@ -54,7 +57,8 @@ The transformed images and updated annotation files will be saved in a copies su
 Important Notes:
 Ensure the classes.txt file is not located in the annotation file directory, as the script counts the number of .txt files in the directory.
 The naming format for the generated images and annotation files appends a sequence number to the original filename (for example, the original files image.jpg and image.txt might have their transformed counterparts named image_1.jpg and image_1.txt).
-The script currently does not implement the functionality to draw text on images (the relevant code is commented out).
+The script currently does not implement the functionality to draw text on images (the relevant code is commented out).The purpose of the commented-out section is to display information about the flip in the top left corner of the newly generated image, indicating the type of flip (one of 0, 90, 180, 270 degrees rotation, vertical flip, or horizontal flip).
+
 Sample Code Invocation:
 Before using this script, you need to set the txtpath and jpgpath variables to the paths of your annotation files and image files, respectively, and then set the num_change variable as required. After running the script, it will automatically process all files and create augmented data copies in the specified directories.
 
